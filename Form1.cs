@@ -25,9 +25,36 @@ namespace Hitoria
             InitializeComponent();
             bGO.Enabled = false;
             freeze(true);
-            
+            Console.WriteLine(System.IO.Path.GetDirectoryName(Environment.GetCommandLineArgs()[0]));
+            string test = getLastOuverture();
+            if(test != "")
+            {
+                ouvrirRep(test);
+            }
         }
+        
 
+        string getLastOuverture()
+        {
+            string path = System.IO.Path.GetDirectoryName(Environment.GetCommandLineArgs()[0]);
+            if (System.IO.File.Exists(path + "/TEMP.txt"))
+            {
+                return System.IO.File.ReadAllLines(path + "/TEMP.txt")[0];
+            }
+            else
+            {
+                return "";
+            }
+        }
+        void setLastOuverture(string path_)
+        {
+            string path = System.IO.Path.GetDirectoryName(Environment.GetCommandLineArgs()[0]);
+            using (System.IO.StreamWriter file =
+            new System.IO.StreamWriter(@path + "/TEMP.txt"))
+            {
+                file.Write(path_);
+            }
+        }
         private void SetModeles()
         {
             selecteurModeles.Items.Clear();
@@ -127,6 +154,7 @@ namespace Hitoria
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
                 {
                     ouvrirRep(fbd.SelectedPath);
+                    setLastOuverture(fbd.SelectedPath);
                 }
             }
         }
@@ -186,20 +214,22 @@ namespace Hitoria
             selecteurDir.Text = AffichageTexte.SelectedText.Trim();
         }
 
-        private void Avancer()
+        private void Avancer(bool creationAutorisee)
         {
             if (selecteurDir.Text != "")
             {
                 AffichageTexte.SaveFile(PathActuel);
                 string seltext = selecteurDir.Text.Trim();
-                Historique.Add(PathActuel);
+                
                 if (Elements.ContainsKey(seltext))
                 {
+                    Historique.Add(PathActuel);
                     PathActuel = Elements[seltext];
                     AffichageTexte.LoadFile(PathActuel);
                 }
-                else
+                else if (creationAutorisee)
                 {
+                    Historique.Add(PathActuel);
                     string name = seltext;
                     string model = (string)selecteurModeles.SelectedItem;
                     AffichageTexte.LoadFile(Modeles[model]);
@@ -219,7 +249,7 @@ namespace Hitoria
 
         private void bGO_Click(object sender, EventArgs e)
         {
-            Avancer();
+            Avancer(true);
         }
 
         private void bretour_Click(object sender, EventArgs e)
@@ -235,7 +265,36 @@ namespace Hitoria
 
         private void AffichageTexte_DoubleClick(object sender, EventArgs e)
         {
-            Avancer();
+            
+            Avancer(chbCreerAuto.Checked);
         }
+
+        private void bRM_Click(object sender, EventArgs e)
+        {
+            if (PathActuel != DirBase + "/start.rtf")
+            {
+                if ((MessageBox.Show( "Voulez vous Oublier a jamais cette carte ?","Attention !",
+    MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+    MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
+                {
+                    supprimer();
+                }
+            }
+        }
+        
+        void supprimer()
+        {
+            Elements.Remove(System.IO.Path.GetFileNameWithoutExtension(PathActuel));
+            if (System.IO.File.Exists(PathActuel))
+            {
+                System.IO.File.Delete(PathActuel);
+            }
+            PathActuel = DirBase + "/start.rtf";
+            AffichageTexte.LoadFile(PathActuel);
+            indicPosition.Text = System.IO.Path.GetFileNameWithoutExtension(PathActuel);
+            SetElements();
+        }
+
+
     }
 }

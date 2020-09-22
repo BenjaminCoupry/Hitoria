@@ -38,6 +38,8 @@
             this.breload = new System.Windows.Forms.Button();
             this.selecteurModeles = new System.Windows.Forms.ListBox();
             this.indicPosition = new System.Windows.Forms.Label();
+            this.bRM = new System.Windows.Forms.Button();
+            this.chbCreerAuto = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // AffichageTexte
@@ -53,7 +55,7 @@
             // 
             // selecteurDir
             // 
-            this.selecteurDir.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.selecteurDir.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.selecteurDir.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.selecteurDir.FormattingEnabled = true;
             this.selecteurDir.Location = new System.Drawing.Point(13, 509);
@@ -139,11 +141,33 @@
             this.indicPosition.TabIndex = 11;
             this.indicPosition.Text = "...";
             // 
+            // bRM
+            // 
+            this.bRM.Location = new System.Drawing.Point(692, 581);
+            this.bRM.Name = "bRM";
+            this.bRM.Size = new System.Drawing.Size(96, 23);
+            this.bRM.TabIndex = 12;
+            this.bRM.Text = "Oublier";
+            this.bRM.UseVisualStyleBackColor = true;
+            this.bRM.Click += new System.EventHandler(this.bRM_Click);
+            // 
+            // chbCreerAuto
+            // 
+            this.chbCreerAuto.AutoSize = true;
+            this.chbCreerAuto.Location = new System.Drawing.Point(540, 514);
+            this.chbCreerAuto.Name = "chbCreerAuto";
+            this.chbCreerAuto.Size = new System.Drawing.Size(138, 17);
+            this.chbCreerAuto.TabIndex = 13;
+            this.chbCreerAuto.Text = "Double Click peut Créer";
+            this.chbCreerAuto.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 610);
+            this.Controls.Add(this.chbCreerAuto);
+            this.Controls.Add(this.bRM);
             this.Controls.Add(this.indicPosition);
             this.Controls.Add(this.selecteurModeles);
             this.Controls.Add(this.breload);
@@ -173,6 +197,8 @@
         private System.Windows.Forms.Button breload;
         private System.Windows.Forms.ListBox selecteurModeles;
         private System.Windows.Forms.Label indicPosition;
+        private System.Windows.Forms.Button bRM;
+        private System.Windows.Forms.CheckBox chbCreerAuto;
     }
 }
 
