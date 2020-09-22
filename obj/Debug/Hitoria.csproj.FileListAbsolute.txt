@@ -1,0 +1,11 @@
+C:\Users\benja\source\repos\Hitoria\Hitoria\bin\Debug\Hitoria.exe.config
+C:\Users\benja\source\repos\Hitoria\Hitoria\bin\Debug\Hitoria.exe
+C:\Users\benja\source\repos\Hitoria\Hitoria\bin\Debug\Hitoria.pdb
+C:\Users\benja\source\repos\Hitoria\Hitoria\obj\Debug\Hitoria.csprojAssemblyReference.cache
+C:\Users\benja\source\repos\Hitoria\Hitoria\obj\Debug\Hitoria.Form1.resources
+C:\Users\benja\source\repos\Hitoria\Hitoria\obj\Debug\Hitoria.Properties.Resources.resources
+C:\Users\benja\source\repos\Hitoria\Hitoria\obj\Debug\Hitoria.csproj.GenerateResource.cache
+C:\Users\benja\source\repos\Hitoria\Hitoria\obj\Debug\Hitoria.csproj.CoreCompileInputs.cache
+C:\Users\benja\source\repos\Hitoria\Hitoria\obj\Debug\Hitoria.exe
+C:\Users\benja\source\repos\Hitoria\Hitoria\obj\Debug\Hitoria.pdb
+C:\Users\benja\source\repos\Hitoria\Hitoria\obj\Debug\Hitoria.csproj.ResolveComReference.cache
